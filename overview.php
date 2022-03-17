@@ -17,5 +17,11 @@
     <?php endforeach; ?>
 </ul>
 
+<form action="" method="get">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" placeholder="Enter new pokemon">
+    <input type="submit" value="Add" name="submit">
+
+</form>
 </body>
 </html>
