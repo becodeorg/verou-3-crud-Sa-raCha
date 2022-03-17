@@ -9,19 +9,19 @@
 </head>
 <body>
 
-<h1>Goodcard - track your collection of Pokémon cards</h1>
+    <h1>Goodcard - track your collection of Pokémon cards</h1>
 
-<ul>
-    <?php foreach ($cards as $card) : ?>
-        <li><?= $card['name'] ?></li>
-    <?php endforeach; ?>
-</ul>
+    <ul>
+        <?php foreach ($cards as $card) : ?>
+            <li><?= $card['name'] ?></li>
+        <?php endforeach; ?>
+    </ul>
 
-<form action="" method="get">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" placeholder="Enter new pokemon">
-    <input type="submit" value="Add" name="submit">
-
-</form>
+    <form action="" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter new pokemon">
+        <input type="submit" value="Add" name="submit">
+        
+    </form>
 </body>
 </html>

@@ -13,10 +13,18 @@ class CardRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create(): void
+    public function create(): bool
     {
-
+        if (isset($_POST['submit']) && !empty($_POST['name'])) {
+            $addedPokemonName = $_POST['name'];
+            $sql = "INSERT INTO pokemon (name) VALUES ('$addedPokemonName' )";
+            $this->databaseManager->connection->query($sql);
+            return true;
+        } else {
+            return false;
+        }
     }
+
 
     // Get one
     public function find(): array

@@ -13,24 +13,36 @@ require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
 require_once 'classes/CardRepository.php';
 
+function whatIsHappening()
+{
+    echo '<pre>';
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '</pre>';
+}
+
+whatIsHappening();
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
 // This example is about a Pokémon card collection
 // Update the naming if you'd like to work with another collection
 $cardRepository = new CardRepository($databaseManager);
+$createWorked = $cardRepository->create();
 $cards = $cardRepository->get();
 
 // Get the current action to execute
 // If nothing is specified, it will remain empty (home should be loaded)
-$action = $_GET['action'] ?? null;
+// $action = $_POST['action'] ?? $_GET['action'] ?? null;
 
-// Load the relevant action
-// This system will help you to only execute the code you want, instead of all of it (or complex if statements)
+// // Load the relevant action
+// // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
-    case 'create':
-        $this->create($cards);
-        break;
+    // case 'create':
+    //     create($cardRepository);
+    //     break;
     default:
         overview($cards);
         break;
@@ -39,13 +51,12 @@ switch ($action) {
 function overview($cards)
 {
     // Load your view
-    // Tip: you can load this dynamically and based on a variable, if you want to load another view
-    var_dump($cards);
-    require 'overview.php';
-    
+    // Tip: you can load this dynamically and based on a variable, if you want to load another view  
+    require 'overview.php';   
+
 }
 
-function create()
-{
-    // TODO: provide the create logic
-}
+// function create($cardRepository)
+// {
+//     // TODO: provide the create logic
+// }   
